@@ -174,3 +174,7 @@ python gradio_app.py
 ```bash
 pytest -q
 ```
+
+## CI
+
+The CI workflow runs unit tests and builds the Docker image on pushes and PRs to `main`.
