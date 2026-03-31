@@ -32,9 +32,13 @@ class _StubLLM:
 
 
 def test_generate_fast_mode(monkeypatch) -> None:
-    from core.services import llm_service
+    from core.graph.nodes import blog_node
+    from core.graph.nodes import seo_social_node
+    from core.graph.nodes import newsletter_node
 
-    monkeypatch.setattr(llm_service, "get_llm_service", lambda: _StubLLM())
+    monkeypatch.setattr(blog_node, "get_llm_service", lambda: _StubLLM())
+    monkeypatch.setattr(seo_social_node, "get_llm_service", lambda: _StubLLM())
+    monkeypatch.setattr(newsletter_node, "get_llm_service", lambda: _StubLLM())
 
     client = get_client()
     response = client.post(
